@@ -20,4 +20,13 @@ abstract class View
 		return ob_get_flush();
 	}
 
+	public static function prettyDump ($var, $title="Debug") {
+		echo "<hr />";
+		echo "<h3>" . $title ."</h3>";
+		echo "<pre>";
+		print_r($var);
+		echo "</pre>";
+		echo "<hr />";
+	}
+
 }

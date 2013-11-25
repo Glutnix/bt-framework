@@ -17,3 +17,5 @@ switch (DEPLOYMENT_MODE) {
 		break;
 
 }
+
+define("SITE_NAME", "Framework Test");

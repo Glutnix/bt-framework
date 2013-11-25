@@ -7,10 +7,10 @@ abstract class BaseView extends View
 
 	public function render()
 	{
-		$this->includeTemplate("base");
+		$this->includeViewTemplate("base");
 	}
 
-	public function includeTemplate($templateFile = NULL)
+	public function includeViewTemplate($templateFile = NULL)
 	{
 		if (is_null($templateFile)) {
 			$templateFile = $this->templateFile;
@@ -18,25 +18,57 @@ abstract class BaseView extends View
 		include PATH_TEMPLATE . "/" . $templateFile . ".php";
 	}
 
-	protected function pageTitle()
+	public function pageTitle()
 	{
-		echo $this->pageTitle;
+		echo $this->model->data['title'] . " :: " . SITE_NAME;
 	}
 
 	protected function pageDescription()
 	{
-		echo $this->pageDescription;
+		echo $this->model->data['description'];
 	}
 
 	protected function pageKeywords()
 	{
-		echo $this->pageKeywords;
+		echo $this->model->data['keywords'];
 	}
 
-	abstract public function pageHeader();
+	public function pageHeader()
+	{
+		echo $this->model->data['header'];
+	}
+
+	public function pageFooter()
+	{
+		echo $this->model->data['footer'];
+	}
 
 	abstract public function pageContents();
 
-	abstract public function pageFooter();
+
+	/* UTILITY FUNCTIONS */
+
+	public static function wrapTextinParagraphElements($content)
+	{
+		return self::wrapTextinElements($content, '<p>', '</p>');
+	}
+
+	public static function wrapTextinListElements($content)
+	{
+		return self::wrapTextinElements($content, '<li>', '</li>');
+	}
+
+	public static function wrapTextinElements($content, $openTag = "<li>", $closeTag = "</li>")
+	{
+		$paragraphs = "";
+		preg_match_all("/^(.+)$/m", $content, $lines);
+		foreach ($lines[0] as $line) {
+			$line = trim($line);
+			if (strlen($line) > 0) {
+				$paragraphs .= $openTag . $line . $closeTag . "\n";
+			}
+		}
+		return $paragraphs;
+	}
 
 }

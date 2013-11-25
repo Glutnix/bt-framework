@@ -8,8 +8,8 @@ require "lib/base/View.php";
 
 require "lib/view/BaseView.php";
 
-//require "lib/model/PageModel.php";
-//require "lib/view/PageView.php";
+require "lib/model/PageModel.php";
+require "lib/view/PageView.php";
 
 require "lib/model/NotFoundModel.php";
 require "lib/view/NotFoundView.php";
@@ -23,6 +23,8 @@ switch ($action) {
 	default:
 		if ( $_GET['page'] ) {
 			$model = new PageModel();
+			$model->getOne($_GET['page']);
+			//View::prettyDump($model->data);
 			$view = new PageView($model);
 		} else {
 			$model = new NotFoundModel();
@@ -30,4 +32,8 @@ switch ($action) {
 		}
 }
 
-$view->render();
+if ($view) {
+	$view->render();
+} else {
+	echo "Nothing to render.";
+}
