@@ -1,6 +1,7 @@
 <?php
 
-class PageModel extends Model {
+class PageModel extends Model
+{
 
 	public function getAll()
 	{
@@ -11,9 +12,7 @@ class PageModel extends Model {
 	{
 		$statement = $this->db->prepare("SELECT * FROM pages WHERE slug = :slug");
 		$statement->bindParam(":slug", $slug);
-		if (!$statement->execute()) {
-			$this->displayError($statement);
-		}
+		$this->db->executeStatement($statement);
 		$this->data = $statement->fetch();
 		return $this->data;
 	}

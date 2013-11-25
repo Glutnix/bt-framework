@@ -7,7 +7,11 @@ class PageView extends BaseView
 
 	public function pageContents()
 	{
-		$this->includeViewTemplate();
+		if ($this->model->data) {
+			$this->includeViewTemplate();
+		} else {
+			echo "No page found with slug ".$_GET['page'].".";
+		}
 	}
 
 	public function pageFooter()

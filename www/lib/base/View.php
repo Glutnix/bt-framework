@@ -21,12 +21,14 @@ abstract class View
 	}
 
 	public static function prettyDump ($var, $title="Debug") {
-		echo "<hr />";
-		echo "<h3>" . $title ."</h3>";
-		echo "<pre>";
-		print_r($var);
-		echo "</pre>";
-		echo "<hr />";
+		if (HOST_TYPE != "live") {
+			echo "<hr />";
+			echo "<h3>" . $title ."</h3>";
+			echo "<pre>";
+			print_r($var);
+			echo "</pre>";
+			echo "<hr />";
+		}
 	}
 
 }

@@ -16,7 +16,10 @@ require "lib/view/NotFoundView.php";
 
 // CONTROLLER
 
-$action = $_GET['action'];
+$action = "";
+if (isset($_GET['action'])) {
+	$action = $_GET['action'];
+}
 
 switch ($action) {
 
