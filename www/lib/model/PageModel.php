@@ -3,9 +3,18 @@
 class PageModel extends Model
 {
 
-	public function getAll()
-	{
+	public $data = array();
+	public $messages = array();
 
+	public function __construct() {
+		parent::__construct();
+		// check for form submission
+
+		// populate $this->data with $_POST
+
+		// validate form, setting $this->messages for view to render.
+
+		// commit to database if no problems
 	}
 
 	public function getOne ( $slug )

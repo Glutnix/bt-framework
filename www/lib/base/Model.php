@@ -3,6 +3,7 @@
 abstract class Model
 {
     protected $db;
+    public $data;
 
     public function __construct()
     {

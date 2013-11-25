@@ -27,7 +27,6 @@ switch ($action) {
 		if ( $_GET['page'] ) {
 			$model = new PageModel();
 			$model->getOne($_GET['page']);
-			//View::prettyDump($model->data);
 			$view = new PageView($model);
 		} else {
 			$model = new NotFoundModel();
