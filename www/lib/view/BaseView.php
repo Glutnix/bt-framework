@@ -35,12 +35,16 @@ abstract class BaseView extends View
 
 	public function pageHeader()
 	{
-		echo $this->model->data['header'];
+		if (isset($this->model->data['header'])) {
+			echo $this->model->data['header'];
+		}
 	}
 
 	public function pageFooter()
 	{
-		echo $this->model->data['footer'];
+		if (isset($this->model->data['footer'])) {
+			echo $this->model->data['footer'];
+		}
 	}
 
 	abstract public function pageContents();
