@@ -25,7 +25,7 @@ abstract class View
 			echo "<hr />";
 			echo "<h3>" . $title ."</h3>";
 			echo "<pre>";
-			print_r($var);
+			var_dump($var);
 			echo "</pre>";
 			echo "<hr />";
 		}

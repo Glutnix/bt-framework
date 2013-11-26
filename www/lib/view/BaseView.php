@@ -15,6 +15,7 @@ abstract class BaseView extends View
 		if (is_null($templateFile)) {
 			$templateFile = $this->templateFile;
 		}
+		$model = $this->model;
 		include PATH_TEMPLATE . "/" . $templateFile . ".php";
 	}
 
